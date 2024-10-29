@@ -59,13 +59,14 @@ selected_min_Y_value, selected_max_Y_value = st.sidebar.slider('Y点の範囲', 
 # マルチセレクトボックス
 options_9001 = st.sidebar.multiselect('ISO9001登録', df['ISO9001登録'].unique(), default=df['ISO9001登録'].unique())
 options_14001 = st.sidebar.multiselect('ISO14001登録', df['ISO14001登録'].unique(), default=df['ISO14001登録'].unique())
+# 会社名検索ボックス
+company_name_search = st.sidebar.text_input('会社名（全角・漢字）を検索')
 
 # 都道府県と市区町村のマルチセレクトボックス
 prefecture_options = st.sidebar.multiselect('都道府県', df['都道府県'].unique(), default=df['都道府県'].unique())
 city_options = st.sidebar.multiselect('市町村', df[df['都道府県'].isin(prefecture_options)]['市町村名'].unique(), default=df[df['都道府県'].isin(prefecture_options)]['市町村名'].unique())
 
-# 会社名検索ボックス
-company_name_search = st.sidebar.text_input('会社名（全角・漢字）を検索')
+
 
 # フィルタリング
 filtered_df = df[
