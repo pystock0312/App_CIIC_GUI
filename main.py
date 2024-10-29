@@ -64,7 +64,7 @@ company_name_search = st.sidebar.text_input('会社名（全角・漢字）を�
 
 # 都道府県と市区町村のマルチセレクトボックス
 prefecture_options = st.sidebar.multiselect('都道府県', df['都道府県'].unique(), default=df['都道府県'].unique())
-city_options = st.sidebar.multiselect('市町村', df[df['都道府県'].isin(prefecture_options)]['市町村名'].unique(), default=df[df['都道府県'].isin(prefecture_options)]['市町村名'].unique())
+city_options = st.sidebar.multiselect('市区町村', df[df['都道府県'].isin(prefecture_options)]['市町村名'].unique(), default=df[df['都道府県'].isin(prefecture_options)]['市町村名'].unique())
 
 
 
