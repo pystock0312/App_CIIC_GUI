@@ -5,30 +5,23 @@ import streamlit as st
 correct_username = "user"
 correct_password = "password"
 
-# ログインフォームの状態を管理
+# ログイン状態を管理
 if 'login' not in st.session_state:
     st.session_state['login'] = False
-if 'rerun_triggered' not in st.session_state:
-    st.session_state['rerun_triggered'] = False
 
-# ログイン処理
+# ログインフォーム
 if not st.session_state['login']:
     with st.container():
         st.title("ログイン")
         username = st.text_input("ユーザー名")
         password = st.text_input("パスワード", type="password")
         
-        if st.button("ログイン") and not st.session_state['rerun_triggered']:
+        if st.button("ログイン"):
             if username == correct_username and password == correct_password:
-                st.session_state['login'] = True
-                st.session_state['rerun_triggered'] = True
+                st.session_state['login'] = True  # ログイン成功フラグを立てる
                 st.success("ログイン成功")
-                st.experimental_rerun()
             else:
                 st.error("ユーザー名またはパスワードが間違っています。")
-
-if st.session_state['rerun_triggered']:
-    st.session_state['rerun_triggered'] = False
 
 # ログインが成功した場合の処理
 if st.session_state['login']:
